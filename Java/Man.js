@@ -65,6 +65,13 @@ export default class Man {
         Number.isInteger(this.x / this.tileSize) &&
         Number.isInteger(this.y / this.tileSize)
       ) {
+          if(
+            !this.GameMap.didCollideWithEnvironment(
+            this.x,
+            this.y,
+            this.requestedKeys
+            )
+          )
         this.currentKeys = this.requestedKeys;
       }
     }

@@ -1,4 +1,6 @@
 import Man from "./Man.js"
+import keys from "./Keys.js";
+
 export default class Map{
     constructor(tileSize){
         this.tileSize = tileSize;
@@ -86,5 +88,14 @@ export default class Map{
     setCanvasSize(canvas){
         canvas.width = this.map[0].length * this.tileSize;
         canvas.height = this.map.length * this.tileSize;
+    }
+
+    didCollideWithEnvironment(x,y,keys){
+        if(
+        Number.isInteger(x/this.tileSize) && 
+        Number.isInteger(y/this.tileSize)
+        ){
+            
+        }
     }
 }
