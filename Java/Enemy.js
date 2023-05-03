@@ -14,11 +14,42 @@ export default class Enemy {
         );
 
         this.enemyTimerDefualt = this.#random(10,50)
+        this.enemyTimer = this.enemyTimerDefualt;
     }
 
-    draw(ctx) {
-        this.#move();
+    draw(ctx, pause) {
+        if(!pause){
+            this.#move();
+            this.#changeDirection();    
+        }
         ctx.drawImage(this.image, this.x, this.y, this.tileSize, this.tileSize)
+    }
+
+    #changeDirection(){
+        this.enemyTimer--;
+        let newEnemyDirection = null;
+        if(this.enemyTimer ==0){
+            this.enemyTimer = this.enemyTimerDefualt
+            newEnemyDirection = Math.floor(
+                Math.random() * Object.keys(Keys).length)
+        }
+
+        if(newEnemyDirection !== null && this.movingEnemy != newEnemyDirection){
+            if(
+                Number.isInteger(this.x / this.tileSize) &&
+                Number.isInteger(this.y / this.tileSize)
+            ){
+                if(
+                    !this.GameMap.didCollideWithEnvironment(
+                        this.x,
+                        this.y,
+                        newEnemyDirection
+                    )
+                ){
+                    this.movingEnemy = newEnemyDirection;
+                }
+            }
+        }
     }
 
     #getEnemy(){
@@ -35,20 +66,20 @@ export default class Enemy {
             this.movingEnemy
             )
         ){
-            switch (this.movingDenemy) {
+            switch(this.movingEnemy){
                 case Keys.up:
-                  this.y -= this.velocity;
-                  break;
+                    this.y -= this.velocity;
+                    break;
                 case Keys.down:
-                  this.y += this.velocity;
-                  break;
+                    this.y += this.velocity
+                    break;
                 case Keys.left:
-                  this.x -= this.velocity;
-                  break;
+                    this.x -= this.velocity
+                    break;
                 case Keys.right:
-                  this.x += this.velocity;
-                  break;
-              }
+                    this.x += this.velocity
+                    break;
+            }
         }
     }
 

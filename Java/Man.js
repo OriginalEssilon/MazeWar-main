@@ -10,6 +10,7 @@ export default class Man {
 
     this.currentKeys = null;
     this.requestedKeys = null;
+    this.madeFirstMove = false;
 
     document.addEventListener("keydown", this.#keydown);
     this.#loadMan();
@@ -41,21 +42,25 @@ export default class Man {
     if (event.keyCode == 38) {
       if (this.currentKeys == Keys.down) this.currentKeys = Keys.up;
       this.requestedKeys = Keys.up;
+      this.madeFirstMove = true;
     }
     //down
     if (event.keyCode == 40) {
       if (this.currentKeys == Keys.up) this.currentKeys = Keys.down;
       this.requestedKeys = Keys.down;
+      this.madeFirstMove = true;
     }
     //left
     if (event.keyCode == 37) {
       if (this.currentKeys == Keys.right) this.currentKeys = Keys.left;
       this.requestedKeys = Keys.left;
+      this.madeFirstMove = true;
     }
     //right
     if (event.keyCode == 39) {
       if (this.currentKeys == Keys.left) this.currentKeys = Keys.right;
       this.requestedKeys = Keys.right;
+      this.madeFirstMove = true;
     }
   };
 

@@ -14,10 +14,12 @@ const enemies = Map.getEnemies(velocity);
 function gameLoop(){
     Map.draw(ctx);
     man.draw(ctx);
-    enemies.forEach((enemy) => enemy.draw(ctx));
+    enemies.forEach((enemy) => enemy.draw(ctx, pause()));
 }
 
-
+function pause(){
+    return !man.madeFirstMove;
+}
 
 Map.setCanvasSize(canvas);
 setInterval(gameLoop, 1000/ 75);
