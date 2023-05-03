@@ -18,20 +18,22 @@ function gameLoop(){
     Map.draw(ctx);
     man.draw(ctx, pause());
     enemies.forEach((enemy) => enemy.draw(ctx, pause()));
-    checkGameOcer();
+    checkGameOver();
 }
 
-function checkGameOcer(){
+function checkGameOver(){
     if(!gameOver){
-        gameOver = isGameOver();
-        if(gameOver){
-            gameOverSound.play();
+    gameOver = isGameOver();
+    if(gameOver){
+        gameOverSound.play();
         }
     }
 }
 
 function isGameOver(){
-    return enemies.some(enemy => enemy.collideWith(man))
+    return enemies.some(
+        (enemy) => enemy.collideWith(man)
+    );
 }
 
 function pause(){
