@@ -17,6 +17,7 @@ export default class Man {
 
   draw(ctx) {
     this.#move();
+    this.#pickCoin();
     ctx.drawImage(
       this.man[this.manImageIndex],
       this.x,
@@ -100,5 +101,9 @@ export default class Man {
         this.x += this.velocity;
         break;
     }
+  }
+
+  #pickCoin(){
+    if(this.GameMap.pickCoin(this.x,this.y)){}
   }
 }
