@@ -1,5 +1,5 @@
 import Man from "./Man.js"
-import keys from "./Keys.js";
+import Keys from "./Keys.js";
 
 export default class Map{
     constructor(tileSize){
@@ -101,22 +101,22 @@ export default class Map{
             let nextRow = 0;
             
             switch(keys){
-                case keys.right:
+                case Keys.right:
                     nextColumn = x + this.tileSize;
                     column = nextColumn/this.tileSize
                     row = y/this.tileSize;
                     break;
-                case keys.left:
+                case Keys.left:
                     nextColumn = x - this.tileSize;
                     column = nextColumn/this.tileSize
                     row = y/this.tileSize;
                     break;
-                case keys.up:
+                case Keys.up:
                     nextRow = y - this.tileSize;
                     row = nextRow/this.tileSize
                     column = x/this.tileSize;
                     break;
-                case keys.down:
+                case Keys.down:
                     nextRow = y + this.tileSize;
                     row = nextRow/this.tileSize
                     column = x/this.tileSize;

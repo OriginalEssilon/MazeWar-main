@@ -74,6 +74,17 @@ export default class Man {
         this.currentKeys = this.requestedKeys;
       }
     }
+
+    if(this.GameMap.didCollideWithEnvironment(
+      this.x,
+      this.y,
+      this.currentKeys
+      )
+      ){
+        return;
+      }
+
+
     switch (this.currentKeys) {
       case Keys.up:
         console.log(Keys.up);
