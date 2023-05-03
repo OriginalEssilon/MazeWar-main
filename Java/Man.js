@@ -55,7 +55,6 @@ export default class Man {
     if (event.keyCode == 39) {
       if (this.currentKeys == Keys.left) this.currentKeys = Keys.right;
       this.requestedKeys = Keys.right;
-      console.log(this.currentKeys);
     }
   };
 
