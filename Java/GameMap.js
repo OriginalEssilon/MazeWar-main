@@ -44,6 +44,14 @@ export default class Map{
                 else if (tile === 0){
                     this.#drawDot(ctx,column,row,this.tileSize);
                 }
+
+                //ctx.strokeStyle = "yellow";
+                //ctx.strokeRect(
+                    //column * this.tileSize,
+                    //row * this.tileSize,
+                    //this.tileSize,
+                    //this.tileSize
+                //);
             }
         }
     }
