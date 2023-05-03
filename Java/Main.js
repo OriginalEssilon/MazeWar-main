@@ -16,20 +16,22 @@ const gameWinSound = new Audio("./Sounds/Gamewin.wav")
 
 function gameLoop(){
     Map.draw(ctx);
+    drawGameEnd();
     man.draw(ctx, pause());
     enemies.forEach((enemy) => enemy.draw(ctx, pause()));
     checkGameOver();
     checkGameWin();
+    
 }
 
-function checkGameWin(){
-    if(!gameWin){
-        gameWin = isGameWin();
-        if(gameWin){
-            gameWinSound.play();
-        }
+function checkGameWin() {
+    if (!gameWin) {
+      gameWin = Map.didWin();
+      if (gameWin) {
+        gameWinSound.play();
+      }
     }
-}
+  }
 
 function checkGameOver(){
     if(!gameOver){
@@ -47,7 +49,28 @@ function isGameOver(){
 }
 
 function pause(){
-    return !man.madeFirstMove || gameOver;
+    return !man.madeFirstMove || gameOver || gameWin;
+}
+
+function drawGameEnd(){
+    if(gameOver || gameWin){
+        let text = " YOU WIN!!";
+        if(gameOver){
+            text = "YOU LOSE!!!"
+        }
+
+        ctx.fillStyle = "black";
+        ctx.fillRect(0,canvas.height / 3.2, canvas.clientWidth, 80);
+
+        ctx.font = "75px comic sans";
+    const gradient = ctx.createLinearGradient(0, 0, canvas.width, 0);
+    gradient.addColorStop("0", "magenta");
+    gradient.addColorStop("0.5", "blue");
+    gradient.addColorStop("1.0", "red");
+
+    ctx.fillStyle = gradient;
+    ctx.fillText(text, 10, canvas.height / 2);
+    }
 }
 
 Map.setCanvasSize(canvas);

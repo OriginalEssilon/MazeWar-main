@@ -68,7 +68,6 @@ export default class Map{
           );
     }
 
-
     getMan(velocity){
         for (let row = 0; row < this.map.length; row++){
             for (let column = 0; column < this.map[row].length; column++){
@@ -163,5 +162,13 @@ export default class Map{
       }
     }
     return false;
+    }
+
+    didWin(){
+        return this.#dotsLeft() === 0;
+    }
+
+    #dotsLeft(){
+        return this.map.flat().filter(tile=>tile === 0).length;
     }
 }
