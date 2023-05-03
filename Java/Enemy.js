@@ -86,4 +86,19 @@ export default class Enemy {
     #random(min, max) {
         return Math.floor(Math.random() * (max - min + 1)) + min;
       }
+
+      collideWith(man){
+        const size = this.tileSize / 2;
+        if(
+            this.x < man.x + size &&
+            this.x + size < man.x &&
+            this.y < man.y + size &&
+            this.y + size < man.y 
+        ){
+            return true;
+        }
+        else {
+            return false;
+        }
+      }
 }

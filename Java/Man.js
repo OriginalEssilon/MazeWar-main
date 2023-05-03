@@ -16,8 +16,10 @@ export default class Man {
     this.#loadMan();
   }
 
-  draw(ctx) {
-    this.#move();
+  draw(ctx, pause) {
+    if(!pause){
+      this.#move();
+    }
     this.#pickCoin();
     ctx.drawImage(
       this.man[this.manImageIndex],
