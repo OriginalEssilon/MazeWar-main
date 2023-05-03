@@ -25,17 +25,17 @@ export default class Enemy {
         ctx.drawImage(this.image, this.x, this.y, this.tileSize, this.tileSize)
     }
 
-    collideWith(man){
+    collideWith(man) {
         const size = this.tileSize / 2;
-        if(
-            this.x < man.x + size &&
-            this.x + size < man.x &&
-            this.y < man.y + size &&
-            this.y + size < man.y 
-        ){
-            return true;
-        }else {
-            return false;
+        if (
+          man.x <= this.x + size &&
+          this.x <= man.x + size &&
+          man.y <= this.y + size &&
+          this.y <= man.y + size
+        ) {
+          return true;
+        } else {
+          return false;
         }
       }
 

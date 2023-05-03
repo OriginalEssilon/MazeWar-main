@@ -19,6 +19,16 @@ function gameLoop(){
     man.draw(ctx, pause());
     enemies.forEach((enemy) => enemy.draw(ctx, pause()));
     checkGameOver();
+    checkGameWin();
+}
+
+function checkGameWin(){
+    if(!gameWin){
+        gameWin = isGameWin();
+        if(gameWin){
+            gameWinSound.play();
+        }
+    }
 }
 
 function checkGameOver(){
