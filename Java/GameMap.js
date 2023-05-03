@@ -26,11 +26,11 @@ export default class Map{
         [1,0,1,1,1,1,1,1,1,0,1,0,1],
         [1,0,0,0,0,0,0,0,0,0,1,0,1],
         [1,0,1,1,1,1,1,0,1,1,1,0,1],
-        [1,0,0,0,0,0,1,0,0,0,1,0,1],
+        [1,0,0,0,0,0,1,3,0,0,1,0,1],
         [1,0,0,0,0,0,1,0,0,0,1,0,1],
         [1,0,0,0,0,0,1,0,0,0,0,0,1],
         [1,0,1,1,1,1,1,1,1,1,1,0,1],
-        [1,3,0,0,0,0,0,0,0,0,0,0,1],
+        [1,3,0,0,0,0,0,0,0,0,0,3,1],
         [1,1,1,1,1,1,1,1,1,1,1,1,1],
     ]
 
@@ -87,22 +87,25 @@ export default class Map{
         }
     }
 
-    getEnemy(velocity){
+    getEnemies(velocity){
+        const enemies = [];
         for (let row = 0; row < this.map.length; row++){
             for (let column = 0; column < this.map[row].length; column++){
                 const tile = this.map[row][column];
                 if (tile === 3){
                     this.map[row][column] = 0;
-                    return new Enemy(
+                    enemies.push(new Enemy(
                         column * this.tileSize, 
                         row * this.tileSize, 
                         this.tileSize, 
                         velocity, 
                         this
-                    );
+                    )
+                )
                 }
             }
         }
+        return enemies;
     }
 
     setCanvasSize(canvas){

@@ -7,14 +7,14 @@ const canvas = document.getElementById("gameCanvas");
 const ctx = canvas.getContext('2d');
 const Map = new GameMap(tileSize);
 const man = Map.getMan(velocity);
-const enemy = Map.getEnemy(velocity);
+const enemies = Map.getEnemies(velocity);
 
 
 
 function gameLoop(){
     Map.draw(ctx);
     man.draw(ctx);
-    enemy.draw(ctx);
+    enemies.forEach((enemy) => enemy.draw(ctx));
 }
 
 
