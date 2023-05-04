@@ -95,7 +95,6 @@ export default class Man {
 
     switch (this.currentKeys) {
       case Keys.up:
-        console.log(Keys.up);
         this.y -= this.velocity;
         break;
       case Keys.down:
